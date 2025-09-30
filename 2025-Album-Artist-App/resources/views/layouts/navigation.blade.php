@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('albums.index')" :active="request()->routeIs('albums.index')">
-                        {{ __('View All Albums') }}
+                        {{ __('View All  Albums') }}
                     </x-nav-link>
                 </div>
             </div>
