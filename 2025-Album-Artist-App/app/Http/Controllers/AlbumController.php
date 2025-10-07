@@ -66,7 +66,7 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        //
+        return view('albums.edit')->with('album', $album);
     }
 
     /**
@@ -74,7 +74,24 @@ class AlbumController extends Controller
      */
     public function update(Request $request, Album $album)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'artist' => 'required|string|max:255',
+            'release_date' => 'required|date',
+            'genre' => 'required|string|max:100',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $album->update([
+            'title' => $request->title,
+            'artist' => $request->artist,
+            'release_date' => $request->release_date,
+            'genre' => $request->genre,
+            'image' => $request->image,
+            'updated_at' => now()
+        ]);
+
+        return to_route('albums.index')->with('success', 'Album updated successfully.');
     }
 
     /**

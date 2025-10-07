@@ -18,6 +18,14 @@
                             :genre="$album->genre"
                             :description="$album->description"
                         />
+                        <div class="mt-4 flex space-x-2">
+                        <a href="{{ route('albums.edit', $album) }}" class="px-4 py-2 bg-blue-500  rounded hover:bg-blue-600">Edit</a>
+                        <form action="{{ route('albums.destroy', $album) }}" method="POST"     onsubmit="return confirm('Are you sure you want to delete this album?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="px-4 py-2 bg-red-500 rounded hover:bg-red-600">Delete</button>
+                        </form>
+                    </div>
                     </div>
                 </div>
             </div>

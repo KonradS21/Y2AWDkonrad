@@ -20,6 +20,9 @@
                         :image="$album->image"
                         />
                     </a>
+
+                    
+                    
                     @endforeach
                 </div>
             </div>
