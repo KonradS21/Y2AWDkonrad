@@ -21,7 +21,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        return view('albums.create');
     }
 
     /**
@@ -29,7 +29,28 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'artist' => 'required|string|max:255',
+            'release_date' => 'required|date',
+            'genre' => 'required|string|max:100',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+       // if ($request->hasFile('image')) {
+        //    $imageName = time().'.'.$request->image->extension();  
+       //     $request->image->move(public_path('images'), $imageName);
+        
+       // }
+        Album::create([
+            'title' => $request->title,
+            'artist' => $request->artist,
+            'release_date' => $request->release_date,
+            'genre' => $request->genre,
+            'image' => $request->image,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        return to_route('albums.index')->with('success', 'Album created successfully.');
     }
 
     /**
@@ -37,7 +58,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        //
+        return view('albums.show')->with('album', $album);
     }
 
     /**
