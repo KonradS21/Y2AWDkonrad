@@ -36,20 +36,23 @@ class AlbumController extends Controller
             'genre' => 'required|string|max:100',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-       // if ($request->hasFile('image')) {
-        //    $imageName = time().'.'.$request->image->extension();  
-       //     $request->image->move(public_path('images'), $imageName);
-        
-       // }
+
+       if ($request->hasFile('image')) {
+        $imageName = time().'.'.$request->image->extension();
+        // $imageName = time().'.'.$request->image->extension();  
+           $request->image->move(public_path('images/albums'), $imageName);
+       }
+
         Album::create([
             'title' => $request->title,
             'artist' => $request->artist,
             'release_date' => $request->release_date,
             'genre' => $request->genre,
-            'image' => $request->image,
+            'image' => $imageName,
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
         return to_route('albums.index')->with('success', 'Album created successfully.');
     }
 
@@ -81,13 +84,26 @@ class AlbumController extends Controller
             'genre' => 'required|string|max:100',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+         // Check if a new image was uploaded
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images/albums'), $imageName);
 
+        // Optionally delete old image
+        if ($album->image && file_exists(public_path('images/albums/' . $album->image))) {
+            unlink(public_path('images/albums/' . $album->image));
+        }
+    } else {
+        // Keep existing image
+        $imageName = $album->image;
+    }
         $album->update([
             'title' => $request->title,
             'artist' => $request->artist,
             'release_date' => $request->release_date,
             'genre' => $request->genre,
-            'image' => $request->image,
+            'image' => $imageName,
             'updated_at' => now()
         ]);
 
@@ -99,6 +115,7 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+        $album->delete();
+        return to_route('albums.index')->with('success', 'Album deleted successfully.');
     }
 }
