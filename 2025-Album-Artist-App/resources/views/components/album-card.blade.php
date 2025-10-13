@@ -1,11 +1,17 @@
-@props(['image', 'title'])
+@props(['image', 'title', 'album'])
 
-<div>
-    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white dark:bg-gray-800 m-4">
-        <img class="w-full h-48 object-cover" src="{{ asset('images/albums/' . $image )}}" alt="{{ $title }}">
-        <div class=" px-6 py-4">
-            <div class="font-bold text-xl mb-2 text-gray-900 dark:text-gray-100">{{ $title }}</div>
-        </div>
-    </div>  
-</div>
+<a href="{{ route('albums.show', $album)}}" class="w-full h-full bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+    <!-- Image -->
+    <div class="flex-1">
+        <img src="{{ asset('images/albums/' . $image )}}" alt="{{ $title }}" class="object-cover">
+    </div>
+
+    <!-- Title -->
+    <div class="p-4 flex items-center justify-center h-full">
+        <h3 class="text-lg font-semibold text-center text-gray-900 dark:text-gray-100">
+        {{ $title }}
+        </h3>
+    </div>
+</a>
+
 
