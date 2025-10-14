@@ -17,12 +17,14 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         
                         @foreach($albums as $album)
+                        <a href="{{ route('albums.show', $album) }}">
                             <x-album-card
                                 
                                 :image="$album->image"
                                 :title="$album->title"
                                 :album="$album" 
                                 /> 
+                        </a>
                         @endforeach
 
                     </div>
