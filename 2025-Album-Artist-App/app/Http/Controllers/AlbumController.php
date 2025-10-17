@@ -35,6 +35,7 @@ class AlbumController extends Controller
             'release_date' => 'required|date',
             'genre' => 'required|string|max:100',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'spotifyembed' => 'nullable|string|max:5000',
         ]);
 
        if ($request->hasFile('image')) {
@@ -49,6 +50,7 @@ class AlbumController extends Controller
             'release_date' => $request->release_date,
             'genre' => $request->genre,
             'image' => $imageName,
+            'spotifyembed' => $request->spotifyembed,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -83,6 +85,7 @@ class AlbumController extends Controller
             'release_date' => 'required|date',
             'genre' => 'required|string|max:100',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'spotifyembed' => 'nullable|string|max:5000',
         ]);
          // Check if a new image was uploaded
     if ($request->hasFile('image')) {
@@ -92,19 +95,20 @@ class AlbumController extends Controller
 
         // Optionally delete old image
         if ($album->image && file_exists(public_path('images/albums/' . $album->image))) {
-            unlink(public_path('images/albums/' . $album->image));
+        unlink(public_path('images/albums/' . $album->image));
         }
     } else {
         // Keep existing image
         $imageName = $album->image;
-    }
+}
         $album->update([
             'title' => $request->title,
             'artist' => $request->artist,
             'release_date' => $request->release_date,
             'genre' => $request->genre,
             'image' => $imageName,
-            'updated_at' => now()
+            'updated_at' => now(),
+            'spotifyembed' => $request->spotifyembed,
         ]);
 
         return to_route('albums.index')->with('success', 'Album updated successfully.');

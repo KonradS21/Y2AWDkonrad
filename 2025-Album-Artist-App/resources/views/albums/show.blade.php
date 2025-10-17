@@ -17,6 +17,7 @@
                             :release_date="$album->release_date"
                             :genre="$album->genre"
                             :description="$album->description"
+                            :spotifyembed="$album->spotifyembed"
                         />
                         <a href="{{ route('albums.edit', $album) }}" class="px-4 py-2 bg-blue-500  rounded hover:bg-blue-600">Edit</a>
                         <div class="mt-4 flex space-x-2">

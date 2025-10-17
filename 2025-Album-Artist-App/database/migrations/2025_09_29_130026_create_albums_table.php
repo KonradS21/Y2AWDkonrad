@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('release_date');
             $table->string('genre');
             $table->string('image');
+            $table->text('spotifyembed')->nullable();
             
             
             

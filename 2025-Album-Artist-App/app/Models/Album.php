@@ -15,6 +15,7 @@ class Album extends Model
         'release_date',
         'genre',
         'image',
+        'spotifyembed',
         'created_at',
         'updated_at'
     ];

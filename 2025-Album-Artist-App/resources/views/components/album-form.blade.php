@@ -66,11 +66,18 @@
         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
         @enderror
     </div>
+    <div class="mb-4">
+        <label for="spotifyembed" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Spotify Embed Code:</label>
+        <textarea name="spotifyembed" id="spotifyembed" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline">{{ old('spotifyembed', $album->spotifyembed ?? '') }}</textarea>
+        @error('spotifyembed')
+        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+        @enderror
+    </div>
     <div>
 
         <x-primary-button>
 
-            {{ isset($book) ? 'Update Book' : 'Add Album' }}
+            {{ isset($album) ? 'Update Album' : 'Add Album' }}
 
         </x-primary-button>
 
