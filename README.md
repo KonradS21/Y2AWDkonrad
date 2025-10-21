@@ -10,3 +10,4 @@ stylign was figured out, i forgot to run node which was causing a mountain of pr
 
 ## week 4: 
 Started working on the extra option, i decided to embed the tracklist from the album into the album details page, i got my extra working and now you can embed the tracklists from the albums into the views.
+<a href="https://www.google.com">Link</a>
