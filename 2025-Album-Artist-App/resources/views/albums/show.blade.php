@@ -19,6 +19,8 @@
                             :description="$album->description"
                             :spotifyembed="$album->spotifyembed"
                         />
+                    @if(auth()->user()->role === 'admin')
+
                         <a href="{{ route('albums.edit', $album) }}" class="px-4 py-2 bg-blue-500  rounded hover:bg-blue-600">Edit</a>
                         <div class="mt-4 flex space-x-2">
                         
@@ -27,6 +29,8 @@
                             @method('DELETE')
                             <button type="submit" class="px-4 py-2 bg-red-500 rounded hover:bg-red-600">Delete</button>
                         </form>
+
+                    @endif
                     </div>
                     </div>
                 </div>

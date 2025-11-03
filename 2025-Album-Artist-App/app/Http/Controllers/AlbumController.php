@@ -21,6 +21,9 @@ class AlbumController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('albums.index')->with('error', 'Unauthorized access.');
+        }
         return view('albums.create');
     }
 

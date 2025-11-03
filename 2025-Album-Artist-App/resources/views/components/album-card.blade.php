@@ -1,4 +1,4 @@
-@props(['image', 'title', 'album'])
+ @props(['image', 'title', 'album'])
 
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300">
 
