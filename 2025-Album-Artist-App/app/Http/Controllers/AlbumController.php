@@ -66,6 +66,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
+        $album->load('songs');
         return view('albums.show')->with('album', $album);
     }
 

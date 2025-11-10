@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
+use App\Models\Song;
+use App\Http\Controllers\SongController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,3 +29,7 @@ Route::put('/albums/{album}', [App\Http\Controllers\AlbumController::class, 'upd
 Route::delete('/albums/{album}', [App\Http\Controllers\AlbumController::class, 'destroy'])->name('albums.destroy');
 
 require __DIR__.'/auth.php';
+
+Route::resource('songs', SongController::class);
+
+Route::post('albums/{album}/songs', [SongController::class, 'store'])->name('songs.store');
