@@ -11,9 +11,7 @@
         <div class="p-6 md:w-2/3">
             <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ $title }}</h2>
 
-            <p class="text-gray-600 mb-1">
-                <span class="font-semibold">Artist:</span> {{ $artist }}
-            </p>
+          
 
             <p class="text-gray-600 mb-1">
                 <span class="font-semibold">Released:</span> {{ $release_date }}

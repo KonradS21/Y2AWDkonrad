@@ -34,7 +34,7 @@ class AlbumController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'artist' => 'required|string|max:255',
+            // 'artist' => 'required|string|max:255',
             'release_date' => 'required|date',
             'genre' => 'required|string|max:100',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -49,7 +49,7 @@ class AlbumController extends Controller
 
         Album::create([
             'title' => $request->title,
-            'artist' => $request->artist,
+            // 'artist' => $request->artist,
             'release_date' => $request->release_date,
             'genre' => $request->genre,
             'image' => $imageName,
@@ -85,7 +85,7 @@ class AlbumController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'artist' => 'required|string|max:255',
+            // 'artist' => 'required|string|max:255',
             'release_date' => 'required|date',
             'genre' => 'required|string|max:100',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -107,7 +107,7 @@ class AlbumController extends Controller
 }
         $album->update([
             'title' => $request->title,
-            'artist' => $request->artist,
+            // 'artist' => $request->artist,
             'release_date' => $request->release_date,
             'genre' => $request->genre,
             'image' => $imageName,

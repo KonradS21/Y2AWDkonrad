@@ -13,7 +13,7 @@
                         <x-album-details 
                             :title="$album->title"
                             :image="asset('images/albums/' . $album->image)"
-                            :artist="$album->artist"
+                        
                             :release_date="$album->release_date"
                             :genre="$album->genre"
                             :description="$album->description"

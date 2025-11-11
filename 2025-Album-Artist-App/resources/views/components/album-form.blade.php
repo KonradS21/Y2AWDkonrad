@@ -33,14 +33,7 @@
         @enderror
     </div>
 
-    <div class="mb-4">
-        <label for="artist" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Artist:</label>
-        <input type="text" name="artist" id="artist" value="{{ old('artist', $album->artist ?? '') }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline">
-        @error('artist')
-        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
-        @enderror
-    </div>
-
+   
     <div class="mb-4">
         <label for="release_date" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Release Date:</label>
         <input type="date" name="release_date" id="release_date"
