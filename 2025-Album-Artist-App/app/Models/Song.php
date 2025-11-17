@@ -14,6 +14,7 @@ class Song extends Model
         'duration',
         'album_id',
         'user_id',
+        'spotifyembed',
         'created_at',
         'updated_at'
     ];

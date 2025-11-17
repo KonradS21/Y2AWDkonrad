@@ -28,8 +28,11 @@ Route::get('/albums/{album}/edit', [App\Http\Controllers\AlbumController::class,
 Route::put('/albums/{album}', [App\Http\Controllers\AlbumController::class, 'update'])->name('albums.update');
 Route::delete('/albums/{album}', [App\Http\Controllers\AlbumController::class, 'destroy'])->name('albums.destroy');
 
-require __DIR__.'/auth.php';
+Route::post('/albums/{album}/songs', [SongController::class, 'store'])->name('songs.store');
 
 Route::resource('songs', SongController::class);
 
-Route::post('albums/{album}/songs', [SongController::class, 'store'])->name('songs.store');
+require __DIR__.'/auth.php';
+
+
+

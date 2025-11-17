@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('album_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
-            $table->integer('duration'); // duration in seconds
+            $table->string('duration'); // duration in seconds
             $table->string('image');
-            $table->string('spotifyembed');
+            // $table->string('spotifyembed')->default('')->change();
+
             
             $table->timestamps();
         });
