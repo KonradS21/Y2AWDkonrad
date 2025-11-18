@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
@@ -31,6 +32,8 @@ Route::delete('/albums/{album}', [App\Http\Controllers\AlbumController::class, '
 Route::post('/albums/{album}/songs', [SongController::class, 'store'])->name('songs.store');
 
 Route::resource('songs', SongController::class);
+Route::resource('artists', ArtistController::class)->middleware('auth');
+
 
 require __DIR__.'/auth.php';
 

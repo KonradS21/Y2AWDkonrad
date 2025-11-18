@@ -13,7 +13,7 @@
 
                     <x-song-form
                         :action="route('songs.update', $song)"
-                        :method="PUT"
+                        :method="'PUT'"
                         :song="$song"
                     />
                 </div>

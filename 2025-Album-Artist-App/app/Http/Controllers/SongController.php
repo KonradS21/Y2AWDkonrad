@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Album;
 use App\Models\Song;
 use Illuminate\Http\Request;
@@ -67,15 +68,15 @@ class SongController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Song $song)
+    public function edit(Song $song)        
     {
-        dd($song);
+       //dd($song);
+        
+        // if (auth()->user()->id !== $song->user_id && auth()->user()->role !== 'admin') {
+        //     return redirect()->route('songs.index', $song->id)->with('error', 'Acccecss denied.');
+        // }
 
-        if (auth()->user()->id !== $song->user_id && auth()->user()->role !== 'admin') {
-            return redirect()->route('songs.index', $song->id)->with('error', 'Acccecss denied.');
-        }
-
-        return view('songs.edit', compact('song'));
+        return view('songs.edit', compact('song'));       
     }
 
     /**
@@ -85,7 +86,7 @@ class SongController extends Controller
     {
         $song->update($request->all());
 
-        return redirect()->route('album.show', $song->id)->with('success','update successful');
+        return redirect()->route('albums.show', $song->album_id)->with('success','update successful');
     }
 
     /**
@@ -93,6 +94,7 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        //
+        $song->delete();
+        return redirect()->route('albums.show', $song->album_id)->with('success','');
     }
 }

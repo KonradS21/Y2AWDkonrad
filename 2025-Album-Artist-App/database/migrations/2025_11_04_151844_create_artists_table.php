@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('album_id')->constrained()->onDelete('cascade');
-            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('stage_name');
             $table->string('birth_name');
             $table->date('birth_date');
@@ -22,6 +20,7 @@ return new class extends Migration
             $table->integer('debut_year');
             $table->string('image');
             $table->integer('no_of_grammys')->default(0);
+            
             $table->timestamps();
 
 

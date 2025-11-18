@@ -28,14 +28,14 @@
                     <ul class="mt-4 space-y-4">
                         @foreach($album->songs as $song)
                             <li class="bg-gray-100 p-4 rounded-lg">
-                            <p class="font-medium">{{ $song->title }}</p>
+                            <p class="font-xl">{{ $song->title }}</p>
                             <p class="text-sm text-gray-600">{{ $song->duration }}</p>
                             {!! html_entity_decode($song->spotifyembed) !!}
                         @if(auth()->user()->role === 'admin')    
-                            <a href="{{ route('songs.edit', $album) }}" class="px-4 py-2 bg-blue-500  rounded hover:bg-blue-600">Edit song</a>
+                            <a href="{{ route('songs.edit', $song) }}" class="px-4 py-2 bg-blue-500  rounded hover:bg-blue-600">Edit song</a>
                             <div class="mt-4 flex space-x-2">
                         
-                            <form action="{{ route('songs.destroy', $album) }}" method="POST"     onsubmit="return confirm('Are you sure you want to delete this album?');">
+                            <form action="{{ route('songs.destroy', $song) }}" method="POST"     onsubmit="return confirm('Are you sure you want to delete this album?');">
                              @csrf
                              @method('DELETE')
                                 <button type="submit" class="px-4 py-2 bg-red-500 rounded hover:bg-red-600">Delete song</button>
@@ -69,7 +69,7 @@
                         <input type="hidden" name="album_id" value="{{ $album->id }}">
                         <div class="mb-4">
                             <label for="title" class="block text-gray-700">Song Title:</label>
-                            <input type="text" name="title" id="title" class="w-full border border-gray-300 p-2 rounded" required>
+                            <input type="text" name="title" id="title" class="h1 w-full border border-gray-300 p-2 rounded" required>
                         </div>
                         <div class="mb-4">
                             <label for="duration" class="block text-gray-700">Duration:</label>

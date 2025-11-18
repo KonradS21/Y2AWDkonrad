@@ -6,12 +6,13 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Album;
 use Carbon\Carbon;
+use App\Models\Artist;
 
 class AlbumSeeder extends Seeder{
     public function run(): void{
     $currentTimeStamp = Carbon::now();
 
-    Album::insert([
+    $albums = [
         [
             'title' => 'The College Dropout',
             'release_date' => Carbon::parse('2004-02-10'),
@@ -36,9 +37,15 @@ class AlbumSeeder extends Seeder{
             'created_at' => $currentTimeStamp,
             'updated_at' => $currentTimeStamp,
         ],
-    ]);
+    ];
 
-    
+    foreach ($albums as $albumData)
+        {
+            $album = Album::create(array_merge($albumData, ['created_at'=>$currentTimeStamp, 'updated_at'=>$currentTimeStamp]));
 
-    }
+            $artists = Artist::inRandomOrder()->take(2)->pluck('id');
+
+            $album->artists()->attach($artists);
+        }
+}
 }
