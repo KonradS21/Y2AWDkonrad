@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('albums.index')" :active="request()->routeIs('albums.index')">
                         {{ __('View All  Albums') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('artists.index')" :active="request()->routeIs('artists.index')">
+                        {{ __('View All Artists') }}
+                    </x-nav-link>
                     
 
                     @if(auth()->user()->role === 'admin')

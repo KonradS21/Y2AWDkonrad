@@ -34,6 +34,14 @@ Route::post('/albums/{album}/songs', [SongController::class, 'store'])->name('so
 Route::resource('songs', SongController::class);
 Route::resource('artists', ArtistController::class)->middleware('auth');
 
+Route::get('/artists', [ArtistController::class,'index'])->name('artists.index');
+Route::get('/artists/create', [ArtistController::class,'create'])->name('artists.create');
+Route::get('/artists/{artist}', [ArtistController::class,'show'])->name('artists.show');
+Route::post('/artists', [ArtistController::class,'store'])->name('artists.store');
+
+Route::get('/artists/{artist}/edit', [ArtistController::class,'edit'])->name('artists.edit');
+Route::put('/artists/{artist}', [ArtistController::class,'update'])->name('artists.update');
+Route::delete('/artists/{artist}', [ArtistController::class, 'destroy'])->name('artists.destroy');
 
 require __DIR__.'/auth.php';
 

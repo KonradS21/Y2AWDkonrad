@@ -12,7 +12,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        $artists = Artist::all();
+        return view("artists.index", compact("artists"));
     }
 
     /**
@@ -36,7 +37,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        //
+        return view('artists.show')->with('artist', $artist);
     }
 
     /**
