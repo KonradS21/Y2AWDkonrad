@@ -40,7 +40,7 @@ Route::get('/artists/{artist}', [ArtistController::class,'show'])->name('artists
 Route::post('/artists', [ArtistController::class,'store'])->name('artists.store');
 
 Route::get('/artists/{artist}/edit', [ArtistController::class,'edit'])->name('artists.edit');
-Route::put('/artists/{artist}', [ArtistController::class,'update'])->name('artists.update');
+Route::put('/artists/{artist}', [App\Http\Controllers\ArtistController::class,'update'])->name('artists.update');
 Route::delete('/artists/{artist}', [ArtistController::class, 'destroy'])->name('artists.destroy');
 
 require __DIR__.'/auth.php';

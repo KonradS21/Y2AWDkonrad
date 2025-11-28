@@ -20,9 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->text('spotifyembed')->nullable();
             
-            
-            
-            
+        
             $table->timestamps();
 
         

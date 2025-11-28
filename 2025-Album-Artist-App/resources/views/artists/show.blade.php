@@ -1,5 +1,6 @@
-<div>
-    <x-app-layout>
+
+
+<x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Artist Details') }}
@@ -18,9 +19,26 @@
                             :debut_year="$artist->debut_year"
                             :biography="$artist->biography"
                             :no_of_grammys="$artist->no_of_grammys"
+                            />
+
+                        @if($artist->albums->isEmpty())
+                        <p>nothing here</p>  
+                        @else
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                              @foreach($artist->albums as $album)
+                              <a href="{{ route('albums.show', $album) }}">
+                                    <x-album-card 
+                                        :image="$album->image"
+                                        :title="$album->title"
+                                        :album="$album"
+
+                                    />
+                                </a>
                             
-                        />
-                         
+                               @endforeach
+                            </div>
+                        @endif
+
                 
                 @if(auth()->user()->role === 'admin')
 
@@ -44,4 +62,3 @@
             </div>
         </div>
     </x-app-layout>
-</div>

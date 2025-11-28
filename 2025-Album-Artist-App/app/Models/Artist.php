@@ -11,7 +11,7 @@ class Artist extends Model
 
     protected $fillable = ['stage_name', 'birth_name', 'birth_date','biography','debut_year','image','no_of_grammys'];
 
-    public function artist()
+    public function albums()
     {
         return $this->belongsToMany(Album::class);
     }

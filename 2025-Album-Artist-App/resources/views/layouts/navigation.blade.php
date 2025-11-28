@@ -28,6 +28,11 @@
                         {{ __('Add new album') }}
                     </x-nav-link>  
                     @endif  
+                    @if(auth()->user()->role === 'admin')
+                    <x-nav-link :href="route('artists.create')" :active="request()->routeIs('artists.create')">
+                        {{ __('Add new artist') }}
+                    </x-nav-link>  
+                    @endif  
                 </div>
             </div>
 
