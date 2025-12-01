@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('duration'); // duration in seconds
             $table->string('image')->nullable();
-            $table->string('spotifyembed')->nullable();
+            $table->string('spotifyembed', length: 1024)->nullable();
 
             
             $table->timestamps();
